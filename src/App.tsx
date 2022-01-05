@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, {createGlobalStyle} from "styled-components";
+import {backgroundColor} from "./stylesConsts";
+import Toolbar from "./components/Toolbar";
+import SettingsBar from "./components/SettingsBar";
+import Canvas from "./components/Canvas";
+
+const GlobalStyles = createGlobalStyle`
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+`;
+
+const AppWrapper = styled.div`
+  min-height: 100vh;
+  width: 100vw;
+  background-color: ${backgroundColor};
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <GlobalStyles />
+            <AppWrapper>
+                <Toolbar />
+                <SettingsBar />
+                <Canvas />
+            </AppWrapper>
+        </>
+    )
 }
 
 export default App;
